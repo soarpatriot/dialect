@@ -1,10 +1,10 @@
 set :stage, :local
-set :server_name, "test.yuxian.me"
+set :server_name, "128.199.205.154"
 
 set :branch, "master"
 
 set :log_level, :debug
-set :deploy_to, "/data/www/city"
+set :deploy_to, "/data/www/dialect"
 
 set :thin_config, "#{shared_path}/config/thin.yml"
 set :thin_pid, "#{shared_path}/tmp/pids/thin.0.pid"

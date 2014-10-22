@@ -1,8 +1,8 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, 'city'
-set :repo_url, 'git@github.com:soarpatriot/city.git'
+set :application, 'dialect'
+set :repo_url, 'git@github.com:soarpatriot/dialect.git'
 
 set :rails_env, 'production'
 

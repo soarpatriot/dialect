@@ -5,7 +5,6 @@ gem 'rails', '4.1.6'
 gem 'rails_config'
 gem 'mysql2'
 
-gem 'rails_config'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
