@@ -6,7 +6,8 @@ upstream <%= fetch(:application) %>_server {
 }
 
 upstream <%= fetch(:application) %>_api_server {
-   server 0.0.0.0:5031;
+   server 0.0.0.0:6031;
+   server 0.0.0.0:6032;
 }
 
 server {
