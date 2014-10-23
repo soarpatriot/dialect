@@ -5,6 +5,9 @@ upstream <%= fetch(:application) %>_server {
   server unix:<%= shared_path %>/tmp/sockets/thin.1.sock fail_timeout=0;
 }
 
+upstream <%= fetch(:application) %>_api_server {
+   server 0.0.0.0:5031;
+}
 
 server {
   # enable one of the following if you're on Linux or FreeBSD
@@ -22,8 +25,26 @@ server {
   root <%= current_path %>/public;
 
   try_files $uri/index.html $uri.html $uri @app;
+  
+  location ^~/v1/ {
 
+    proxy_pass http://<%= fetch(:application) %>_api_server;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    # proxy_redirect off;
 
+  }
+  
+  location ^~/v2/ {
+
+    proxy_pass http://<%= fetch(:application) %>_api_server;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    # proxy_redirect off;
+
+  }
 
   location @app {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
